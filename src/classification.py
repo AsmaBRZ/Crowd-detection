@@ -97,6 +97,24 @@ class CropLayer(object):
     def forward(self, inputs):
         return [inputs[0][:,:,self.ystart:self.yend,self.xstart:self.xend]]
 
+def makeBlackBorders(im):
+  result = im.copy()
+  w,h,c = im.shape
+  for i in range(w):
+    for j in range(h):
+      if i == 0 :
+        result[i,j] = [0.0,0.0,0.0]
+      elif i == w-1 :
+        result[i,j] = [0.0,0.0,0.0]
+
+  for i in range(h):
+    for j in range(w):
+      if i == 0 :
+        result[j,i] = [0.0,0.0,0.0]
+      elif i == h-1 :
+        result[j,i] = [0.0,0.0,0.0]
+
+  return result
 
 start = time.time()
 cv.dnn_registerLayer('Crop', CropLayer)
@@ -108,12 +126,12 @@ net = cv.dnn.readNet(args.prototxt, args.caffemodel)
 kWinName = 'Holistically-Nested_Edge_Detection'
 
 f = open("FD1.txt", "w")
-liste = os.listdir('Images/0/') # dir is your directory path
+liste = os.listdir('Images/1/') # dir is your directory path
 N = len(liste)
 print("Number of elements: ",N)
 r = []
 for i in range(N):
-    im = cv.imread('Images/0/'+str(i)+'.jpg')
+    im = cv.imread('Images/1/'+str(i)+'.jpg')
 
     h,w,c = im.shape
     inp = cv.dnn.blobFromImage(im, scalefactor=1.0, size=(args.width, args.height),
@@ -138,6 +156,7 @@ for i in range(N):
     
     contours, hierarchy = cv.findContours(thresh, cv.RETR_TREE, cv.CHAIN_APPROX_NONE)
     cv.drawContours(contour, contours, -1, tuple([255]*im.shape[-1]), 1)
+    contour = makeBlackBorders(contour)
     cv.imwrite("Experiments/contour"+str(i)+".png",contour)
     
     #ZZ = cv.imread('contour'+str(i)+'.png',0) 
