@@ -9,6 +9,7 @@ I have written a complete article to explain the solution. The article is availa
 I have constructed a web application to test the proposed solution.  [*Click here to test the Crowd Detection App*](https://crowd-detection-app.herokuapp.com/)
 
 Web application :
+
 ![github-small](images/app.png)
 
 
