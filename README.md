@@ -1,5 +1,5 @@
 # Crowd detection using fractal dimension and local density
-This repository contains the complete code of my university project, named "Crowd detection using fractal dimension and local density". Crowd detection is the task of classifying and localizing crowd in images. 
+This repository contains the complete code of my university project, named "Crowd detection using fractal dimension and local density". Crowd detection is the task of classifying and localizing a crowd in images. 
 
 In this project, I am particularly interested in pedestrians crowd detection. I mostly used image processing methods to isolate the crowd from non-interesting objetcs and background. Specifically, the classification task is based on fractal dimension and the localization task is based on local density.
 
