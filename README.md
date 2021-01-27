@@ -14,4 +14,4 @@ Web application :
 
 
 ## Credits
-The fractal dimension computation originates from the repository [gist submission](https://github.com/ErikRZH/Fractal-Dimension/blob/master/).
+The fractal dimension computation originates from the repository [*Github repository*](https://github.com/ErikRZH/Fractal-Dimension/blob/master/).
